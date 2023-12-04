@@ -1,5 +1,8 @@
 package otus.highload.socialnetwork.delegates;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -7,12 +10,20 @@ import otus.highload.socialnetwork.openapi.api.UserApiDelegate;
 import otus.highload.socialnetwork.openapi.model.User;
 import otus.highload.socialnetwork.openapi.model.UserRegisterPost200Response;
 import otus.highload.socialnetwork.openapi.model.UserRegisterPostRequest;
+import otus.highload.socialnetwork.service.CreateUserService;
+import otus.highload.socialnetwork.service.GetUserService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Component
+@RequiredArgsConstructor
 public class UserApiDelegateImpl implements UserApiDelegate {
+
+    @Autowired
+    private final CreateUserService createUserService;
+    @Autowired
+    private final GetUserService getUserService;
 
 
     @Override
@@ -27,7 +38,8 @@ public class UserApiDelegateImpl implements UserApiDelegate {
 
     @Override
     public ResponseEntity<UserRegisterPost200Response> userRegisterPost(UserRegisterPostRequest userRegisterPostRequest) {
-        return UserApiDelegate.super.userRegisterPost(userRegisterPostRequest);
+        UserRegisterPost200Response registeredUserId = createUserService.register(userRegisterPostRequest);
+        return new ResponseEntity<>(registeredUserId, HttpStatus.OK);
     }
 
     @Override
