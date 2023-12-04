@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "ef27728b-7bce-4a82-ba72-624497d6d0c4",
+		"name": "otus_highload",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30461199"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"first_name\": \"fn\",\n  \"second_name\": \"sn\",\n  \"birthdate\": \"2017-02-01\",\n  \"biography\": \"bio\",\n  \"city\": \"M\",\n  \"password\": \"pswd\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
