@@ -33,13 +33,14 @@ public class UserApiDelegateImpl implements UserApiDelegate {
 
     @Override
     public ResponseEntity<User> userGetIdGet(String id) {
-        return UserApiDelegate.super.userGetIdGet(id);
+        User user = getUserService.get(id);
+        return ResponseEntity.ok(user);
     }
 
     @Override
     public ResponseEntity<UserRegisterPost200Response> userRegisterPost(UserRegisterPostRequest userRegisterPostRequest) {
         UserRegisterPost200Response registeredUserId = createUserService.register(userRegisterPostRequest);
-        return new ResponseEntity<>(registeredUserId, HttpStatus.OK);
+        return ResponseEntity.ok(registeredUserId);
     }
 
     @Override

@@ -19,6 +19,7 @@ public class LoginApiDelegateImpl implements LoginApiDelegate {
 
     @Override
     public ResponseEntity<LoginPost200Response> loginPost(LoginPostRequest loginPostRequest) {
+
         return LoginApiDelegate.super.loginPost(loginPostRequest);
     }
 
