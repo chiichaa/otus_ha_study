@@ -10,6 +10,7 @@ import otus.highload.socialnetwork.openapi.model.LoginPost200Response;
 import otus.highload.socialnetwork.openapi.model.LoginPostRequest;
 import otus.highload.socialnetwork.service.LoginUserService;
 
+import javax.security.auth.message.AuthException;
 import java.util.Optional;
 
 @Component
@@ -26,7 +27,12 @@ public class LoginApiDelegateImpl implements LoginApiDelegate {
 
     @Override
     public ResponseEntity<LoginPost200Response> loginPost(LoginPostRequest loginPostRequest) {
-        LoginPost200Response userToken = loginUserService.getUserToken(loginPostRequest);
+        LoginPost200Response userToken = null;
+        try {
+            userToken = loginUserService.getUserToken(loginPostRequest);
+        } catch (AuthException e) {
+            return ResponseEntity.badRequest().build();
+        }
         return ResponseEntity.ok(userToken);
     }
 
