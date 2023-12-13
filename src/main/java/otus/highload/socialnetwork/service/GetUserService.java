@@ -13,6 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -42,6 +45,31 @@ public class GetUserService {
             } else {
                 throw new NoSuchElementException();
             }
+        } catch (SQLException e) {
+            log.error("get User error", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Transactional
+    public List<User> useSearch(String firstName, String lastName) {
+        final String selectUserInfo = "select id, first_name, second_name, birthdate, biography, city from users where first_name like ? and second_name like ? order by id";
+        try (Connection con = ds.getConnection(); PreparedStatement preparedStatement = con.prepareStatement(selectUserInfo)) {
+            preparedStatement.setString(1, firstName + "%");
+            preparedStatement.setString(2, lastName + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<User> userSearchResult = new LinkedList<>();
+            while (resultSet.next()) {
+                User user = new User();
+                user.id(resultSet.getString("id"));
+                user.firstName(resultSet.getString("first_name"));
+                user.secondName(resultSet.getString("second_name"));
+                user.birthdate(LocalDate.from(dateFormatter.parse(resultSet.getString("birthdate"))));
+                user.biography(resultSet.getString("biography"));
+                user.city(resultSet.getString("city"));
+                userSearchResult.add(user);
+            }
+            return userSearchResult;
         } catch (SQLException e) {
             log.error("get User error", e);
             throw new RuntimeException(e);

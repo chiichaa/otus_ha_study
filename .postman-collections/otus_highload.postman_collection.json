@@ -111,6 +111,43 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "User search",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYzc1MjQ2YS1iZTYxLTRlZTgtYjRjNi0xYmRkNWJhNWRlMGQiLCJleHAiOjE3MTA5NDYxMjMsInJvbGVzIjpbIlVTRVIiXX0.BMVch-CcdNTLwRGVZOYQYzCBBzI39gcOj0ee2oNi5xWTZ-Ykh9eowYRRbDYFhs90n7YdzODC4hewYCHM7j740g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user/get/ac75246a-be61-4ee8-b4c6-1bdd5ba5de0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"get",
+						"ac75246a-be61-4ee8-b4c6-1bdd5ba5de0d"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

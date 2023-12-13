@@ -45,7 +45,8 @@ public class UserApiDelegateImpl implements UserApiDelegate {
 
     @Override
     public ResponseEntity<List<User>> userSearchGet(String firstName, String lastName) {
-        return UserApiDelegate.super.userSearchGet(firstName, lastName);
+        List<User> users = getUserService.useSearch(firstName, lastName);
+        return ResponseEntity.ok(users);
     }
 
 }
