@@ -19,7 +19,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"first_name\": \"fn\",\n  \"second_name\": \"sn\",\n  \"birthdate\": \"2017-02-01\",\n  \"biography\": \"bio\",\n  \"city\": \"M\",\n  \"password\": \"pswd\"\n}"
+					"raw": "{\n  \"first_name\": \"fn\",\n  \"second_name\": \"sn\",\n  \"birthdate\": \"2017-02-01\",\n  \"biography\": \"bio\",\n  \"city\": \"M\",\n  \"password\": \"pswd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "http://localhost:8080/user/register",
@@ -31,6 +36,77 @@
 					"path": [
 						"user",
 						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"ac75246a-be61-4ee8-b4c6-1bdd5ba5de0d\",\n  \"password\": \"pswd\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYzc1MjQ2YS1iZTYxLTRlZTgtYjRjNi0xYmRkNWJhNWRlMGQiLCJleHAiOjE3MTA5NDYxMjMsInJvbGVzIjpbIlVTRVIiXX0.BMVch-CcdNTLwRGVZOYQYzCBBzI39gcOj0ee2oNi5xWTZ-Ykh9eowYRRbDYFhs90n7YdzODC4hewYCHM7j740g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user/get/ac75246a-be61-4ee8-b4c6-1bdd5ba5de0d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"get",
+						"ac75246a-be61-4ee8-b4c6-1bdd5ba5de0d"
 					]
 				}
 			},

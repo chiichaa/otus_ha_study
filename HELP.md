@@ -1,21 +1,22 @@
-# Getting Started
+требовуется устровленное окружение Docker (docker-compose, docker desktop, colima ...):
 
-### Reference Documentation
+### Гайд по сборке и запуску
+все команды выполняются из корня проекта
 
-For further reference, please consider the following sections:
+сборка образа для демонастрации:
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.2.0/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.2.0/maven-plugin/reference/html/#build-image)
-* [JDBC API](https://docs.spring.io/spring-boot/docs/3.2.0/reference/htmlsingle/index.html#data.sql)
-* [Liquibase Migration](https://docs.spring.io/spring-boot/docs/3.2.0/reference/htmlsingle/index.html#howto.data-initialization.migration-tool.liquibase)
-* [Spring Data JDBC](https://docs.spring.io/spring-boot/docs/3.2.0/reference/htmlsingle/index.html#data.sql.jdbc)
+`docker build . -t otus-highload-study:homework1 -f build.image.Dockerfile`
 
-### Guides
+запуск демонстрационного compose файла:
 
-The following guides illustrate how to use some features concretely:
+`docker-compose -f ./.docker-compose/local-demo/docker-compose.yml up -d`
 
-* [Accessing Relational Data using JDBC with Spring](https://spring.io/guides/gs/relational-data-access/)
-* [Managing Transactions](https://spring.io/guides/gs/managing-transactions/)
-* [Using Spring Data JDBC](https://github.com/spring-projects/spring-data-examples/tree/master/jdbc/basics)
+остановка демонстрационного compose файла:
 
+`docker-compose -f ./.docker-compose/local-demo/docker-compose.yml down`
+
+### Дополнительные, полезные файлы 
+
+файл с коллекцией postman:
+
+[.postman-collections/otus_highload.postman_collection.json](.postman-collections/otus_highload.postman_collection.json)
