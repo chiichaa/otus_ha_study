@@ -49,7 +49,7 @@ class CreateUserServiceTest {
             while ((line = br.readLine()) != null) {
                 tempArr = line.split(",");
                 String firstName = tempArr[0].split(" ")[0];
-                String secondName = tempArr[0].split(" ")[0];
+                String secondName = tempArr[0].split(" ")[1];
                 UserRegisterPostRequest userRegisterPostRequest = new UserRegisterPostRequest();
                 userRegisterPostRequest.firstName(firstName);
                 userRegisterPostRequest.secondName(secondName);
